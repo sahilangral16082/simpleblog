@@ -4,4 +4,11 @@ Rails.application.routes.draw do
   root 'posts#index', as: 'home'
   get 'about' => 'pages#about', as: 'about'
   resources :posts
+  resources :users, except: [:new]
+  get 'signup' => 'users#new', as: 'use'
+  get 'signup', to: 'users#new'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+   
 end
